@@ -51,7 +51,7 @@ export default {
 
   mounted() {
     const testApi = async () => {
-      let urlNews = `http://newsapi.org/v2/top-headlines?country=co&category=technology&apiKey=92f7486d76354de1bc23c324ef2c2acb`;
+      let urlNews = `https://newsapi.org/v2/top-headlines?country=co&category=technology&apiKey=92f7486d76354de1bc23c324ef2c2acb`;
 
       try {
         const result = await fetch(urlNews, {
