@@ -116,9 +116,10 @@
 import axios from "axios";
 
 export default {
+  name: "TableUsuarios",
   data: () => ({
-    //url: 'http://localhost:3000/';
-    url: "https://warm-waters-11328.herokuapp.com/",
+    url: "http://localhost:3000/",
+    //url: "https://warm-waters-11328.herokuapp.com/",
     switch1: true,
     dialog: false,
     dialogDelete: false,
@@ -198,9 +199,17 @@ export default {
     deleteItemConfirm() {
       if (!this.editedItem.estado) {
         axios
-          .put(`${this.url}api/usuario/activate`, {
-            id: this.editedItem.id,
-          })
+          .put(
+            `${this.url}api/usuario/activate`,
+            {
+              id: this.editedItem.id,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -210,9 +219,17 @@ export default {
           });
       } else {
         axios
-          .put(`${this.url}/api/usuario/deactivate`, {
-            id: this.editedItem.id,
-          })
+          .put(
+            `${this.url}/api/usuario/deactivate`,
+            {
+              id: this.editedItem.id,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -244,14 +261,22 @@ export default {
     save() {
       if (this.editedIndex > -1) {
         axios
-          .put(`${this.url}api/usuario/update`, {
-            id: this.editedItem.id,
-            nombre: this.editedItem.nombre,
-            email: this.editedItem.email,
-            rol: this.editedItem.rol,
-            estado: 1,
-            password: this.editedItem.password,
-          })
+          .put(
+            `${this.url}api/usuario/update`,
+            {
+              id: this.editedItem.id,
+              nombre: this.editedItem.nombre,
+              email: this.editedItem.email,
+              rol: this.editedItem.rol,
+              estado: 1,
+              password: this.editedItem.password,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -261,13 +286,21 @@ export default {
           });
       } else {
         axios
-          .post(`${this.url}api/usuario/register`, {
-            nombre: this.editedItem.nombre,
-            email: this.editedItem.email,
-            rol: this.editedItem.rol,
-            estado: 1,
-            password: this.editedItem.password,
-          })
+          .post(
+            `${this.url}api/usuario/register`,
+            {
+              nombre: this.editedItem.nombre,
+              email: this.editedItem.email,
+              rol: this.editedItem.rol,
+              estado: 1,
+              password: this.editedItem.password,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })

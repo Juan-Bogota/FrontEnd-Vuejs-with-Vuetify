@@ -73,9 +73,7 @@
       </v-toolbar>
     </template>
     <template v-slot:item.actions="{ item }">
-      <v-icon small class="mr-2" @click="edix | tItem(item)">
-        mdi-pencil
-      </v-icon>
+      <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
 
       <v-icon medium @click="deleteItem(item)">
         <template v-if="item.estado"> mdi-toggle-switch </template>
@@ -85,10 +83,6 @@
     <template v-slot:no-data>
       <v-btn color="primary" @click="initialize"> Reset </v-btn>
     </template>
-    <pre>
-      {{ $data.categorias }}
-  </pre
-    >
   </v-data-table>
 </template>
 
@@ -96,9 +90,10 @@
 import axios from "axios";
 
 export default {
+  name: "TableCategoria",
   data: () => ({
-    //url: 'http://localhost:3000/';
-    url: "https://warm-waters-11328.herokuapp.com/",
+    url: "http://localhost:3000/",
+    //url: "https://warm-waters-11328.herokuapp.com/",
     switch1: true,
     dialog: false,
     dialogDelete: false,
@@ -149,7 +144,11 @@ export default {
   methods: {
     list() {
       axios
-        .get(`${this.url}api/categoria/list`)
+        .get(`${this.url}api/categoria/list`, {
+          headers: {
+            token: this.$store.state.token,
+          },
+        })
         .then((response) => {
           console.log(response.data);
           this.categorias = response.data;
@@ -176,9 +175,17 @@ export default {
     deleteItemConfirm() {
       if (!this.editedItem.estado) {
         axios
-          .put(`${this.url}api/categoria/activate`, {
-            id: this.editedItem.id,
-          })
+          .put(
+            `${this.url}api/categoria/activate`,
+            {
+              id: this.editedItem.id,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -188,9 +195,17 @@ export default {
           });
       } else {
         axios
-          .put(`${this.url}api/categoria/deactivate`, {
-            id: this.editedItem.id,
-          })
+          .put(
+            `${this.url}api/categoria/deactivate`,
+            {
+              id: this.editedItem.id,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -222,11 +237,19 @@ export default {
     save() {
       if (this.editedIndex > -1) {
         axios
-          .put(`${this.url}api/categoria/update`, {
-            id: this.editedItem.id,
-            nombre: this.editedItem.nombre,
-            descripcion: this.editedItem.descripcion,
-          })
+          .put(
+            `${this.url}api/categoria/update`,
+            {
+              id: this.editedItem.id,
+              nombre: this.editedItem.nombre,
+              descripcion: this.editedItem.descripcion,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -236,11 +259,19 @@ export default {
           });
       } else {
         axios
-          .post(`${this.url}api/categoria/add`, {
-            nombre: this.editedItem.nombre,
-            descripcion: this.editedItem.descripcion,
-            estado: 1,
-          })
+          .post(
+            `${this.url}api/categoria/add`,
+            {
+              nombre: this.editedItem.nombre,
+              descripcion: this.editedItem.descripcion,
+              estado: 1,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })

@@ -114,8 +114,9 @@
 import axios from "axios";
 
 export default {
+  name: "TableArticulo",
   data: () => ({
-    //url: 'http://localhost:3000/',
+    //url: "http://localhost:3000/",
     url: "https://warm-waters-11328.herokuapp.com/",
     dialog: false,
     dialogDelete: false,
@@ -144,12 +145,16 @@ export default {
       descripcion: "",
       precio_venta: "",
       codigo: "",
+      categoria: null,
+      estado: 0,
     },
     defaultItem: {
       nombre: "",
       descripcion: "",
       precio_venta: "",
       codigo: "",
+      categoria: null,
+      estado: 0,
     },
   }),
 
@@ -203,6 +208,7 @@ export default {
 
     editItem(item) {
       this.editedIndex = item.id;
+      this.categoria = item ? item.categoria : "";
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
@@ -216,9 +222,17 @@ export default {
     deleteItemConfirm() {
       if (!this.editedItem.estado) {
         axios
-          .put(`${this.url}api/articulo/activate`, {
-            id: this.editedItem.id,
-          })
+          .put(
+            `${this.url}api/articulo/activate`,
+            {
+              id: this.editedItem.id,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -228,9 +242,17 @@ export default {
           });
       } else {
         axios
-          .put(`${this.url}api/articulo/deactivate`, {
-            id: this.editedItem.id,
-          })
+          .put(
+            `${this.url}api/articulo/deactivate`,
+            {
+              id: this.editedItem.id,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -262,14 +284,22 @@ export default {
     save() {
       if (this.editedIndex > -1) {
         axios
-          .put(`${this.url}api/articulo/update`, {
-            id: this.editedItem.id,
-            categoria: this.categoria.id,
-            nombre: this.editedItem.nombre,
-            descripcion: this.editedItem.descripcion,
-            precio_venta: this.editedItem.precio_venta,
-            codigo: this.editedItem.codigo,
-          })
+          .put(
+            `${this.url}api/articulo/update`,
+            {
+              id: this.editedItem.id,
+              categoria: this.categoria.id,
+              nombre: this.editedItem.nombre,
+              descripcion: this.editedItem.descripcion,
+              precio_venta: this.editedItem.precio_venta,
+              codigo: this.editedItem.codigo,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })
@@ -279,14 +309,22 @@ export default {
           });
       } else {
         axios
-          .post(`${this.url}api/articulo/add`, {
-            categoriaId: this.categoria.id,
-            nombre: this.editedItem.nombre,
-            descripcion: this.editedItem.descripcion,
-            precio_venta: this.editedItem.precio_venta,
-            codigo: this.editedItem.codigo,
-            estado: 1,
-          })
+          .post(
+            `${this.url}api/articulo/add`,
+            {
+              categoriaId: this.categoria.id,
+              nombre: this.editedItem.nombre,
+              descripcion: this.editedItem.descripcion,
+              precio_venta: this.editedItem.precio_venta,
+              codigo: this.editedItem.codigo,
+              estado: 1,
+            },
+            {
+              headers: {
+                token: this.$store.state.token,
+              },
+            }
+          )
           .then((response) => {
             this.list();
           })

@@ -1,17 +1,15 @@
 <template>
   <v-app light>
     <v-toolbar class="white">
-      <v-toolbar-side-icon
-        ><img :src="imageLink.logo" alt="Vuetify.js" height="60px"
-      /></v-toolbar-side-icon>
+      <img :src="imageLink.logo" alt="Vuetify.js" height="60px" />
       <v-toolbar-title class="mx-0" v-text="title"></v-toolbar-title>
       <p>Beta</p>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn flat class="green lighten-3" href="/home">Sign In</v-btn>
+        <v-btn class="green lighten-3" href="/login">Sign In</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-content>
+    <v-main>
       <section>
         <v-parallax :src="imageLink.sub_main" style="opacity: 0.7">
           <v-layout column align-center justify-center class="white--text">
@@ -27,7 +25,7 @@
             >
               Puedes encontrar tus archivos con solo hacer clic en un botón.
             </div>
-            <v-btn class="blue lighten-2 mt-5" dark large href="/home">
+            <v-btn class="blue lighten-2 mt-5" dark large href="/">
               Get Started
             </v-btn>
           </v-layout>
@@ -118,7 +116,7 @@
               >Con nuestro servicios y esasoria puedes lograr un cambio en tu
               estructura y lograr objetivo muchos mas ambiosos en tu empresa</em
             >
-            <v-btn class="blue lighten-2 mt-5" dark large href="/home">
+            <v-btn class="blue lighten-2 mt-5" dark large href="/">
               Mas info
             </v-btn>
           </v-layout>
@@ -144,7 +142,7 @@
                 <v-card-text>
                   <v-flex xs12 v-if="!subscribed">
                     <v-text-field
-                      box
+                      filled
                       label="Email address"
                       :rules="emailRules"
                       v-model="email"
@@ -154,7 +152,7 @@
                   </v-flex>
                   <v-flex xs12 v-if="!subscribed">
                     <v-text-field
-                      box
+                      filled
                       multi-line
                       label="Envianos tus preguntas o comentarios"
                     ></v-text-field>
@@ -170,7 +168,7 @@
                   </v-flex>
                   <v-flex xs12 class="text-xs-center" v-if="subscribed">
                     <v-btn class="green lighten-2 mb-5" dark large
-                      >Bienvenido, espera nuestra respuesta!</v-btn
+                      >Bienvenido!</v-btn
                     >
                   </v-flex>
                 </v-card-text>
@@ -252,14 +250,14 @@
           </v-flex>
         </v-layout>
       </v-footer>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
 <script>
 import TeamCard from "./TeamCard.vue";
 export default {
-  name: "App",
+  name: "LandingPage",
 
   components: {
     TeamCard,
@@ -334,18 +332,6 @@ export default {
     subscribe: function () {
       this.subscribed = !this.subscribed;
     },
-  },
-
-  computed: {
-    imgHeight: function () {
-      var offset = 320;
-      console.log("new image height is " + (this.pageHeight - offset));
-      return this.pageHeight - offset;
-    },
-  },
-
-  mounted: function () {
-    this.calculateHeight();
   },
 };
 </script>
