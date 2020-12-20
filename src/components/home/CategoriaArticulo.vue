@@ -85,8 +85,8 @@ export default {
     return {
       drawer: null,
       show: false,
-      url: "http://localhost:3000/",
-      //url: "https://warm-waters-11328.herokuapp.com/",
+      //url: "http://localhost:3000/",
+      url: "https://warm-waters-11328.herokuapp.com/",
       title: "Paperless App",
       imageLink: {
         sub_main:

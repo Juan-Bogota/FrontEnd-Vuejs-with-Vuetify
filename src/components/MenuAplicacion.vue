@@ -60,8 +60,8 @@ export default {
   data: () => {
     return {
       drawer: null,
-      url: "http://localhost:3000/",
-      //url: "https://warm-waters-11328.herokuapp.com/",
+      //url: "http://localhost:3000/",
+      url: "https://warm-waters-11328.herokuapp.com/",
       selectedItem: 0,
       items: [
         { text: "Home", icon: "mdi-home", ruta: "Home" },
