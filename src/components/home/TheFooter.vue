@@ -45,6 +45,7 @@ export default {
         logo:
           "https://cdn.dribbble.com/users/381299/screenshots/5655677/dribbble.jpg",
       },
+      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
     };
   },
 };

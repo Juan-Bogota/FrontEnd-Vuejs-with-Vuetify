@@ -48,29 +48,31 @@ export default {
       news: null,
     };
   },
-
-  mounted() {
-    const testApi = async () => {
-      let urlNews = `https://newsapi.org/v2/top-headlines?country=co&category=technology&apiKey=92f7486d76354de1bc23c324ef2c2acb`;
-
-      try {
-        const result = await fetch(urlNews, {
-          method: "GET",
-          mode: "cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        });
-        const data = await result.json();
-        console.log(data);
-        this.news = data.articles.slice(0, 4);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    testApi();
+	created() {
+    this.noticias();
   },
-};
+	 methods: {
+    noticias() {
+		let urlNews = `http://newsapi.org/v2/top-headlines?country=co&category=technology&apiKey=92f7486d76354de1bc23c324ef2c2acb`;
+      axios
+        .get(urlNews,{
+			headers: {
+			"Access-Control-Allow-Origin": "*"
+		}
+		})
+        .then((response) => {
+          console.log(response.data);
+          this.news = response.data.articles.slice(0, 4);
+        })
+        .catch((error) => {
+          console.log(error);
+          return error;
+        });
+    },
+
+  
+}
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
