@@ -1,14 +1,6 @@
 <template>
   <v-app light>
-    <v-toolbar class="white">
-      <img :src="imageLink.logo" alt="Vuetify.js" height="60px" />
-      <v-toolbar-title class="mx-0" v-text="title"></v-toolbar-title>
-      <p>Beta</p>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn class="green lighten-3" href="/login">Sign In</v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
+    
     <v-main>
       <section>
         <v-parallax :src="imageLink.sub_main" style="opacity: 0.7">
@@ -25,8 +17,8 @@
             >
               Puedes encontrar tus archivos con solo hacer clic en un botón.
             </div>
-            <v-btn class="blue lighten-2 mt-5" dark large href="/">
-              Get Started
+            <v-btn class="blue lighten-2 mt-5" dark large :to="{ name: 'Home' }">
+              Ir a la pagina
             </v-btn>
           </v-layout>
         </v-parallax>
@@ -116,7 +108,7 @@
               >Con nuestro servicios y esasoria puedes lograr un cambio en tu
               estructura y lograr objetivo muchos mas ambiosos en tu empresa</em
             >
-            <v-btn class="blue lighten-2 mt-5" dark large href="/">
+            <v-btn class="blue lighten-2 mt-5" dark large :to="{ name: 'Home' }">
               Mas info
             </v-btn>
           </v-layout>
@@ -225,42 +217,23 @@
           </div>
         </div>
       </section>
-      <section>
-        <v-container>
-          <v-layout>
-            <v-flex xs12 class="text-center">
-              <img height="200px" :src="imageLink.logo" />
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </section>
-
-      <v-footer class="green darken-2">
-        <v-layout row wrap align-center>
-          <v-flex xs12 class="text-center">
-            <div class="white--text ml-3">
-              Made with
-              <a
-                class="white--text"
-                href="https://vuetifyjs.com"
-                target="_blank"
-                >Vuetify</a
-              >
-            </div>
-          </v-flex>
-        </v-layout>
-      </v-footer>
+      
+      <TheFooter />
+      
     </v-main>
   </v-app>
 </template>
 
 <script>
 import TeamCard from "./TeamCard.vue";
+import TheFooter from "./home/TheFooter";
+
 export default {
   name: "LandingPage",
 
   components: {
     TeamCard,
+    TheFooter
   },
   data: function () {
     return {

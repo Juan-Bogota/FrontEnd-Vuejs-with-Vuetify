@@ -31,7 +31,7 @@ const store = new Vuex.Store({
             if (token) {
                 commit('setToken', token);
                 commit('setUsuario', jwtdecode(token));
-                router.push({ name: 'Auth' })
+                router.push({ name: 'AuthHome' })
             }
 
         },

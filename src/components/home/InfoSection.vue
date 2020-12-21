@@ -14,8 +14,8 @@
         >
           Puedes encontrar tus archivos con solo hacer clic en un botón.
         </div>
-        <v-btn class="blue lighten-2 mt-5" dark large href="/">
-          Get Started
+        <v-btn class="blue lighten-2 mt-5" dark large :to="{ name: 'Landing' }">
+          Nuestra Empresa
         </v-btn>
       </v-layout>
     </v-parallax>

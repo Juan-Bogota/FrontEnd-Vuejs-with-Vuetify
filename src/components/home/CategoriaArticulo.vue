@@ -94,7 +94,7 @@ export default {
         logo:
           "https://cdn.dribbble.com/users/381299/screenshots/5655677/dribbble.jpg",
       },
-      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+      
       categorias: [],
       articulos: [],
     };
@@ -107,7 +107,13 @@ export default {
   methods: {
     categoria() {
       axios
-        .get(`${this.url}api/categoria/list`)
+        .get(`${this.url}api/categoria/list`,
+           {
+              headers: {
+                token: this.$store.state.token,
+              },
+           }
+        )
         .then((response) => {
           console.log(response.data);
 

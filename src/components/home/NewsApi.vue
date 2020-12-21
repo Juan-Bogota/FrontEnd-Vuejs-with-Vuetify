@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import NewsAPI from 'newsapi';
 export default {
   name: "NewsApi",
   data() {
@@ -57,7 +58,9 @@ export default {
       axios
         .get(urlNews,{
 			headers: {
-			"Access-Control-Allow-Origin": "*"
+			"Access-Control-Allow-Origin": "*",
+			'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+			"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
 		}
 		})
         .then((response) => {
@@ -68,7 +71,20 @@ export default {
           console.log(error);
           return error;
         });
-    },
+	},
+	
+	mynews() {
+		const newsapi = new NewsAPI('92f7486d76354de1bc23c324ef2c2acb',  { 'mode': 'cors', headers: { 'Access-Control-Allow-Origin': '*' }} );
+newsapi.sources({
+  category: 'technology', // optional
+  language: 'en', // optional
+  country: 'us' // optional
+}
+).then(response => {
+  console.log(response);
+	this.news = response.sources.slice(0, 4);
+});
+	}
 
   
 }

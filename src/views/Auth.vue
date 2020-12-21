@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <menu-aplicacion></menu-aplicacion>
  
   

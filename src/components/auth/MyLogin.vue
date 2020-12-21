@@ -5,6 +5,7 @@
         <v-col>
           <v-card class="px-5 py-5" elevation="14" light rounded>
             <v-card-title> Formulario Login </v-card-title>
+
             <v-form ref="form" lazy-validation>
               <v-card-text>
                 <v-text-field
@@ -33,6 +34,13 @@
                   @click="loginUser"
                 >
                   Login
+                </v-btn>
+                <v-btn
+                  color="blue"
+                  class="mr-4"
+                  href="/"
+                >
+                  Home
                 </v-btn>
               </v-card-actions>
             </v-form>
@@ -70,7 +78,7 @@ export default {
 
   beforeCreated() {
     this.$store.dispatch("autoLogin")
-      ? this.$router.push({ path: "/segura" })
+      ? this.$router.push({ path: "/auth/home" })
       : false;
   },
   methods: {
@@ -82,7 +90,7 @@ export default {
         })
         .then((data) => {
           this.$store.dispatch("guardarToken", data.tokenReturn);
-          this.$router.push("/auth");
+          this.$router.push("/auth/home");
           swal("Login Correct", `Los datos estan ok usuario`, "success");
           console.log(data);
         })

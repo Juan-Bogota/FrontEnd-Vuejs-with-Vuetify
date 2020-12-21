@@ -118,8 +118,8 @@ import axios from "axios";
 export default {
   name: "TableUsuarios",
   data: () => ({
-    //url: "http://localhost:3000/",
-    url: "https://warm-waters-11328.herokuapp.com/",
+    url: "http://localhost:3000/",
+    //url: "https://warm-waters-11328.herokuapp.com/",
     switch1: true,
     dialog: false,
     dialogDelete: false,
@@ -171,12 +171,18 @@ export default {
   methods: {
     list() {
       axios
-        .get(`${this.url}api/usuario/list`)
+        .get(`${this.url}api/usuario/list`,
+        {
+          headers: {
+            token: this.$store.state.token,
+          },
+        })
         .then((response) => {
           console.log(response.data);
           this.usuarios = response.data;
           this.cargando = false;
-        })
+        },
+        )
         .catch((error) => {
           console.log(error);
           return error;

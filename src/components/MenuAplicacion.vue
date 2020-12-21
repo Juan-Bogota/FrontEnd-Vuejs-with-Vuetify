@@ -106,6 +106,9 @@ export default {
           params: {
             id: this.$store.state.user.id,
           },
+          headers: {
+                token: this.$store.state.token,
+              },
         })
         .then((response) => {
           console.log(response.data);
