@@ -116,8 +116,8 @@ import axios from "axios";
 export default {
   name: "TableArticulo",
   data: () => ({
-    url: "http://localhost:3000/",
-    //url: "https://warm-waters-11328.herokuapp.com/",
+    //url: "http://localhost:3000/",
+    url: "https://warm-waters-11328.herokuapp.com/",
     dialog: false,
     dialogDelete: false,
     cargando: true,
