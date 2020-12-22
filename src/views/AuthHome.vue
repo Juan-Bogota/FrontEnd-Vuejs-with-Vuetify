@@ -1,5 +1,10 @@
 <template>
   <div>
+    <v-alert
+      dismissible
+      type="success"
+      >Bienvenido!
+    </v-alert>
     <v-card
       class="mx-auto mb-5"
       max-width="344"

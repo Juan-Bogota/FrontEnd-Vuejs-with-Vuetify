@@ -1,16 +1,16 @@
 <template>
   <div>
-    <v-app-bar app>
+    <v-app-bar app color="teal darken-1" dense dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Administración</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn depressed elevation="2" large rounded text @click="salir()"
+      <v-btn depressed elevation="8" large rounded text @click="salir()"
         ><v-icon>mdi-logout</v-icon><span>LogOut</span></v-btn
       >
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" fixed temporary>
+    <v-navigation-drawer v-model="drawer" fixed temporary color="cyan lighten-5">
       <v-list>
         <v-list-item>
           <v-list-item-avatar>
@@ -61,7 +61,7 @@ export default {
     return {
       drawer: null,
       //url: "http://localhost:3000/",
-      url: "https://warm-waters-11328.herokuapp.com/",
+      url:"https://warm-waters-11328.herokuapp.com/",
       selectedItem: 0,
       items: [
         { text: "Home", icon: "mdi-home", ruta: "Home" },

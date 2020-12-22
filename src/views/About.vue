@@ -36,6 +36,14 @@ export default {
         },
         {
           codigo: 2,
+          nombre: "Juan Lopez",
+          descripcion:
+            "Soy ingeniero Aeronautico, me gusta mucho programacion especialmente en Arduino, y mi hobbie es jugar ajedrez y montar bicicleta",
+          image: "img/juan.jpg",
+          rol: "Desarrollador BackEnd",
+        },
+        {
+          codigo: 3,
           nombre: "Kevin Figueroa",
           descripcion:
             "Estudiante de la Universidad Tecnológica de Bolívar, en la carrera de ingeniería de sistemas, 18 años, le gusta el mar, los atardeceres y disfruta de una buena película, se caracteriza por ser una persona calmada, paciente y responsable.",
@@ -43,21 +51,14 @@ export default {
           rol: "Desarrollador FrontEnd",
         },
         {
-          codigo: 3,
+          codigo: 4,
           nombre: "Christian Gonzales",
           descripcion:
             "Estudiante de Ingeniería de Sistemas en la UNAB, miembro de la Escuela Latinoamericana de Inteligencia Artificial. si lo puedes imaginar lo puedes programar..",
           image: "img/cristian.PNG",
           rol: "Desarrollador BackEnd",
         },
-        {
-          codigo: 4,
-          nombre: "Juan Lopez",
-          descripcion:
-            "Soy ingeniero Aeronautico, me gusta mucho programacion especialmente en Arduino, y mi hobbie es jugar ajedrez y montar bicicleta",
-          image: "img/juan.jpg",
-          rol: "Desarrollador BackEnd",
-        },
+        
         {
           codigo: 5,
           nombre: "Camilo Ramirez",

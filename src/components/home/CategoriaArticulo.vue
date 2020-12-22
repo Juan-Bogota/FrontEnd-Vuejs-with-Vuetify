@@ -31,7 +31,10 @@
                     articulo.estado === 1
                   "
                   :key="`${n}${j}`"
-                  cols="4"
+                  cols="12"
+                  sm="6"
+                  md="4"
+                  lg="3"
                 >
                   <v-card class="mx-auto" max-width="344">
                     <v-img :src="articulo.imagen" height="200px"></v-img>
@@ -86,7 +89,7 @@ export default {
       drawer: null,
       show: false,
       //url: "http://localhost:3000/",
-      url: "https://warm-waters-11328.herokuapp.com/",
+      url:"https://warm-waters-11328.herokuapp.com/",
       title: "Paperless App",
       imageLink: {
         sub_main:

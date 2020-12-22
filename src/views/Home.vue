@@ -4,6 +4,7 @@
       <NavBar />
       <InfoSection />
       <CategoriaArticulo />
+      
       <NewsApi />
       <TheFooter />
     </v-main>
@@ -18,6 +19,7 @@ import InfoSection from "../components/home/InfoSection";
 import MenuAplicacion from "../components/MenuAplicacion";
 import TheFooter from "../components/home/TheFooter";
 import NewsApi from "../components/home/NewsApi";
+
 
 export default {
   name: "Home",

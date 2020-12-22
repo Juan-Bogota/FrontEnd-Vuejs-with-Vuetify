@@ -1,43 +1,37 @@
 <template>
-  <div class="card text-white bg-dark">
-    <div class="d-flex justify-content-center p-2">
-      <span class="text-aling: center">
-        <img
-          v-bind:src="member.image"
-          :alt="member.nombre"
-          class="img-fluid img-thumbnail"
-        />
-      </span>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">
-        {{ member.nombre }}
-      </h4>
-      <p>
-        <span class="text-danger"> Cod: {{ member.codigo }}</span>
-      </p>
-      <h5>
-        <b>Rol:</b> <span class="text-info">{{ member.rol }}</span>
-      </h5>
-      <p class="card-text font-italic">
-        {{ member.descripcion }}
-      </p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-</template>
+  <v-container>
+    <v-row>
+      <v-col col="12">
+        <v-card max-width="300" class="mx-auto">
+          <v-container>
+            <v-row dense>
+              
+              <v-col>
 
-<script>
+                <v-card :color= "'black'" dark>
+                      <v-img :src="member.image" height="200"></v-img>
+
+                      <v-card-title class="headline">{{member.nombre}}</v-card-title>
+                      <v-card-subtitle class="red--text">Codigo: {{member.codigo}}</v-card-subtitle>
+                      <v-card-subtitle>{{member.descripcion}}</v-card-subtitle>
+                      <v-card-subtitle class="blue--text"><b>Rol: {{member.rol}}</b></v-card-subtitle>
+                  
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template><script>
 export default {
-  name: "TeamSection",
+  name: "HelloWorld",
   props: {
-    member: Object,
+    member: Object
   },
+  data: () => ({
+   
+  }),
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

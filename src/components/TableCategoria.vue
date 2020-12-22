@@ -93,7 +93,7 @@ export default {
   name: "TableCategoria",
   data: () => ({
     //url: "http://localhost:3000/",
-    url: "https://warm-waters-11328.herokuapp.com/",
+    url:"https://warm-waters-11328.herokuapp.com/",
     switch1: true,
     dialog: false,
     dialogDelete: false,
